@@ -16,7 +16,6 @@ interface Props {
   fetchUserError: any;
   isFetchingUser: boolean;
 }
-interface State {}
 
 class App extends React.Component<Props> {
   render() {
@@ -58,8 +57,8 @@ const mapStateToProps = (state: any) => {
   return {
     isPinging: state.ping.isPinging,
     joy: state.user.joy,
-    fetchUserError: state.fetchUserError,
-    isFetchingUser: state.isFetchingUser
+    fetchUserError: state.user.error,
+    isFetchingUser: state.user.isFetchingUser
   };
 };
 

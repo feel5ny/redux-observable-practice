@@ -26,45 +26,25 @@ const users = (
   state = {
     joy: {
       avatar_url: ""
-    }
+    },
+    error: "",
+    isFetchingUser: false
   },
-  action: any
+  action: ActionInterface
 ) => {
   switch (action.type) {
+    case FETCH_USER:
+      return { ...state, isFetchingUser: true };
     case FETCH_USER_FULFILLED:
       return {
         ...state,
-        joy: action.payload
+        joy: action.payload,
+        isFetchingUser: false
       };
-
-    default:
-      return state;
-  }
-};
-
-const fetchUserError = (state = null, action: ActionInterface) => {
-  switch (action.type) {
-    case FETCH_USER:
-    case FETCH_USER_FULFILLED:
-      return null;
-
     case FETCH_USER_REJECTED:
-      return action.payload;
-
-    default:
-      return state;
-  }
-};
-const isFetchingUser = (state = false, action: ActionInterface): boolean => {
-  switch (action.type) {
-    case FETCH_USER:
-      return true;
-
-    case FETCH_USER_FULFILLED:
-    case FETCH_USER_REJECTED:
+      return { ...state, error: action.payload, isFetchingUser: false };
     case FETCH_USER_CANCELLED:
-      return false;
-
+      return { ...state, isFetchingUser: false };
     default:
       return state;
   }
@@ -72,7 +52,5 @@ const isFetchingUser = (state = false, action: ActionInterface): boolean => {
 
 export const rootReudcer = combineReducers({
   ping: pingReducer,
-  user: users,
-  fetchUserError,
-  isFetchingUser
+  user: users
 });

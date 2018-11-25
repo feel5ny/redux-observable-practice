@@ -1,8 +1,8 @@
-import { createEpicMiddleware, Options, Epic } from "redux-observable";
-import { applyMiddleware, createStore, compose } from "redux";
+import { createEpicMiddleware } from "redux-observable";
+import { applyMiddleware, createStore } from "redux";
 import logger from "redux-logger";
 import { rootReudcer } from "./reducers";
-import { pingEpic, rootEpic } from "./epics";
+import { rootEpic } from "./epics";
 
 const epicMiddleware = createEpicMiddleware();
 

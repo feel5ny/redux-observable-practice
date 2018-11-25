@@ -1,0 +1,48 @@
+body {
+  background: #172631;
+  color: white;
+  padding: 10%;
+}
+button {
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 20px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  outline: none;
+}
+button:hover {
+  text-decoration: underline;
+}
+
+.App {
+  text-align: center;
+  padding: 0 20%;
+}
+.App__pingPong {
+  display: inline-flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.App__pingPong img {
+  display: block;
+  margin: 0 auto;
+}
+.App__pingPong--ball {
+  width: 100px;
+  height: 100px;
+}
+.App__fetch {
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.App__fetch img {
+  border-radius: 200px;
+  width: 200px;
+  border: none;
+  margin: 10px 0;
+}

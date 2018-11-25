@@ -26,12 +26,12 @@ import {
 
 export interface ActionInterface {
   type: string;
-  payload?: any;
+  payload: any;
 }
 
 export const pingEpic = (
-  action$: ActionsObservable<Action<string>>
-): Observable<ActionInterface> => {
+  action$: ActionsObservable<Action>
+): Observable<Action> => {
   return action$.pipe(
     ofType(PING),
     delay(1000),
@@ -40,9 +40,9 @@ export const pingEpic = (
 };
 
 export const fetchUserEpic = (
-  action$: ActionsObservable<Action<string>>,
+  action$: Observable<Action>,
   state$: StateObservable<any>
-): Observable<ActionInterface> => {
+): Observable<Action> => {
   return action$.pipe(
     ofType(FETCH_USER),
     mergeMap((action: ActionInterface) =>
